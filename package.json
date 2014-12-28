@@ -4,7 +4,7 @@
   "description": "Library to store graph into simple json format",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "tap test/*.js"
   },
   "keywords": [
     "ngraph",
@@ -19,5 +19,9 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/anvaka/ngraph.tojson"
+  },
+  "devDependencies": {
+    "ngraph.graph": "0.0.5",
+    "tap": "^0.4.13"
   }
 }
