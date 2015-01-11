@@ -2,6 +2,7 @@
 
 Library to store graph into simple json format
 
+[![Build Status](https://travis-ci.org/anvaka/ngraph.tojson.svg)](https://travis-ci.org/anvaka/ngraph.tojson)
 # usage
 
 ``` javascript
