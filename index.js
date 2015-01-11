@@ -1,11 +1,14 @@
 module.exports = save;
 
-function save(graph) {
+function save(graph, customNodeTransform, customLinkTransform) {
   // Object contains `nodes` and `links` arrays.
   var result = {
     nodes: [],
     links: []
   };
+
+  var nodeTransform = customNodeTransform || defaultTransformForNode;
+  var linkTransform = customLinkTransform || defaultTransformForLink;
 
   graph.forEachNode(saveNode);
   graph.forEachLink(saveLink);
@@ -15,16 +18,16 @@ function save(graph) {
   function saveNode(node) {
     // Each node of the graph is processed to take only required fields
     // `id` and `data`
-    result.nodes.push(transformNodeForSave(node));
+    result.nodes.push(nodeTransform(node));
   }
 
   function saveLink(link) {
     // Each link of the graph is also processed to take `fromId`, `toId` and
     // `data`
-    result.links.push(transformLinkForSave(link));
+    result.links.push(linkTransform(link));
   }
 
-  function transformNodeForSave(node) {
+  function defaultTransformForNode(node) {
     var result = {
       id: node.id
     };
@@ -36,7 +39,7 @@ function save(graph) {
     return result;
   }
 
-  function transformLinkForSave(link) {
+  function defaultTransformForLink(link) {
     var result = {
       fromId: link.fromId,
       toId: link.toId,
