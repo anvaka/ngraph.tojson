@@ -1,5 +1,5 @@
 module.exports = save;
-
+var JSONStream = require('JSONStream');
 function save(graph, customNodeTransform, customLinkTransform) {
   // Object contains `nodes` and `links` arrays.
   var result = {
@@ -13,7 +13,7 @@ function save(graph, customNodeTransform, customLinkTransform) {
   graph.forEachNode(saveNode);
   graph.forEachLink(saveLink);
 
-  return JSON.stringify(result);
+  return JSONStream.stringify(result);
 
   function saveNode(node) {
     // Each node of the graph is processed to take only required fields
