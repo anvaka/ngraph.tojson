@@ -21,7 +21,7 @@
     "url": "https://github.com/anvaka/ngraph.tojson"
   },
   "devDependencies": {
-    "ngraph.graph": "0.0.12",
-    "tap": "^0.4.13"
+    "ngraph.graph": "^19.0.0",
+    "tap": "^14.9.2"
   }
 }
