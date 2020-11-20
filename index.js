@@ -13,18 +13,19 @@ function save(graph, customNodeTransform, customLinkTransform) {
   graph.forEachNode(saveNode);
   graph.forEachLink(saveLink);
 
-  return JSON.stringify(result);
+  return '{"nodes": [' + result.nodes.join(',') + '], "links": [' + 
+  result.links.join(',') + ']}';
 
   function saveNode(node) {
     // Each node of the graph is processed to take only required fields
     // `id` and `data`
-    result.nodes.push(nodeTransform(node));
+    result.nodes.push(JSON.stringify(nodeTransform(node)));
   }
 
   function saveLink(link) {
     // Each link of the graph is also processed to take `fromId`, `toId` and
     // `data`
-    result.links.push(linkTransform(link));
+    result.links.push(JSON.stringify(linkTransform(link)));
   }
 
   function defaultTransformForNode(node) {
