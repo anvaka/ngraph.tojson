@@ -1,5 +1,8 @@
 module.exports = save;
 
+// TODO: 
+// 1. move customXXX to options object;
+// 2. Add customWriter to options object, similar to ngraph.todot
 function save(graph, customNodeTransform, customLinkTransform) {
   // Object contains `nodes` and `links` arrays.
   var result = {

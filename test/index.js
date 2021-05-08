@@ -29,9 +29,32 @@ test('Can save graph with transform', function(t) {
   var json = toJSON(g, nodeTransform, linkTransform);
   var parsedGraph = JSON.parse(json);
 
-  t.equals(parsedGraph.nodes[0][0], 1, 'First node id should be stored in array');
-  t.equals(parsedGraph.nodes[0][1], 'Custom data', 'First node id should be stored in array');
-  t.equals(parsedGraph.links[0][1], 2, 'To link id should be stored in array');
+  t.equal(parsedGraph.nodes[0][0], 1, 'First node id should be stored in array');
+  t.equal(parsedGraph.nodes[0][1], 'Custom data', 'First node id should be stored in array');
+  t.equal(parsedGraph.links[0][1], 2, 'To link id should be stored in array');
+  t.end();
+
+  function nodeTransform(node) {
+    return [node.id, node.data];
+  }
+
+  function linkTransform(link) {
+    return [link.fromId, link.toId, link.data];
+  }
+});
+
+test('Can save graph with default transform', function(t) {
+  var g = createGraph();
+
+  g.addNode(1, 'Custom data');
+  g.addLink(1, 2, 'Custom link data');
+
+  var json = toJSON(g);
+  var parsedGraph = JSON.parse(json);
+
+  t.equal(parsedGraph.nodes[0].id, 1, 'First node id is stored');
+  t.equal(parsedGraph.nodes[0].data, 'Custom data', 'First node has data');
+  t.equal(parsedGraph.links[0].data, 'Custom link data', 'First link has data');
   t.end();
 
   function nodeTransform(node) {
