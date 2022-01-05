@@ -1,6 +1,6 @@
 {
   "name": "ngraph.tojson",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Library to store graph into simple json format",
   "main": "index.js",
   "scripts": {
