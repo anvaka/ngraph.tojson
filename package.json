@@ -4,7 +4,7 @@
   "description": "Library to store graph into simple json format",
   "main": "index.js",
   "scripts": {
-    "test": "tap --branches=95 --lines=95 --statements=95 --functions=95 test/*.js"
+    "test": "tap --allow-incomplete-coverage test/*.js"
   },
   "keywords": [
     "ngraph",
@@ -22,6 +22,6 @@
   },
   "devDependencies": {
     "ngraph.graph": "^20.0.0",
-    "tap": "^16.3.0"
+    "tap": "^18.1.4"
   }
 }
